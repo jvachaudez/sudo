@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011">
+  <Metadata>
+    <Identity Language="fr-FR" Id="sudo-extension" Version="0.4.0" Publisher="cours-portable" />
+    <DisplayName>SUDO</DisplayName>
+    <Description xml:space="preserve">Exercices de programmation avec énoncé et tests intégrés.</Description>
+    <Tags>education,python,c,exercises,testing,mermaid</Tags>
+    <Categories>Education</Categories>
+    <Properties>
+      <Property Id="Microsoft.VisualStudio.Code.Engine" Value="^1.92.0" />
+      <Property Id="Microsoft.VisualStudio.Code.ExtensionDependencies" Value="" />
+    </Properties>
+  </Metadata>
+  <Installation>
+    <InstallationTarget Id="Microsoft.VisualStudio.Code" />
+  </Installation>
+  <Dependencies />
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.Code.Manifest" Path="extension/package.json" Addressable="true" />
+    <Asset Type="Microsoft.VisualStudio.Services.Icons.Default" Path="extension/media/sudo.png" Addressable="true" />
+  </Assets>
+</PackageManifest>

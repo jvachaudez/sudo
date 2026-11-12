@@ -1,0 +1,117 @@
+{
+  "name": "sudo-extension",
+  "displayName": "SUDO",
+  "description": "Exercices de programmation avec énoncé et tests intégrés.",
+  "version": "0.4.0",
+  "publisher": "cours-portable",
+  "icon": "media/sudo.png",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.92.0"
+  },
+  "categories": [
+    "Education",
+    "Testing"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onCommand:sudo.openExercisesFolder",
+    "onCommand:sudo.openExercise",
+    "onCommand:sudo.chooseExercise",
+    "onCommand:sudo.runTests",
+    "onCommand:sudo.resetExercise"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "sudo.openExercisesFolder",
+        "title": "SUDO : ouvrir le dossier Exercises ou un cours",
+        "icon": "$(folder-opened)"
+      },
+      {
+        "command": "sudo.openExercise",
+        "title": "SUDO : choisir un exercice"
+      },
+      {
+        "command": "sudo.chooseExercise",
+        "title": "SUDO : choisir un exercice",
+        "icon": "$(list-selection)"
+      },
+      {
+        "command": "sudo.runTests",
+        "title": "SUDO : exécuter les tests",
+        "icon": "$(play)"
+      },
+      {
+        "command": "sudo.resetExercise",
+        "title": "SUDO : recommencer l’exercice"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "sudo.openExercisesFolder",
+          "when": "view == workbench.explorer.fileView",
+          "group": "navigation@10"
+        }
+      ],
+      "editor/title": [
+        {
+          "command": "sudo.runTests",
+          "when": "resourceExtname == .py || resourceExtname == .c",
+          "group": "navigation@1"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "sudo.openExercisesFolder"
+        },
+        {
+          "command": "sudo.openExercise"
+        },
+        {
+          "command": "sudo.chooseExercise"
+        },
+        {
+          "command": "sudo.runTests"
+        },
+        {
+          "command": "sudo.resetExercise"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "command": "sudo.runTests",
+        "key": "ctrl+shift+enter",
+        "mac": "cmd+shift+enter",
+        "when": "editorLangId == python || editorLangId == c"
+      }
+    ],
+    "configuration": {
+      "title": "SUDO",
+      "properties": {
+        "sudo.autoOpen": {
+          "type": "boolean",
+          "default": true,
+          "description": "Ouvrir automatiquement le premier exercice au démarrage ou à l’ouverture d’un dossier d’exercices."
+        },
+        "sudo.pythonPath": {
+          "type": "string",
+          "default": "",
+          "description": "Chemin optionnel de l’interpréteur Python."
+        },
+        "sudo.gccPath": {
+          "type": "string",
+          "default": "",
+          "description": "Chemin optionnel du compilateur GCC."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "package": "bash scripts/package-vsix.sh",
+    "test": "node --test tests\\exercise-startup.test.js"
+  }
+}
